@@ -26,7 +26,6 @@ function ImageSlider() {
             if (index === value - 1) {
               slideClassPostion = "prevSlide";
             }
-
             return (
               <div
                 className={`slider-prettier ${slideClassPostion}`}

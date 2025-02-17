@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: rgba(113, 113, 113, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 500px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar .progress-bar-percentage {
+  width: 100%;
+  background-color: #c5c5c5ee;
+  border-radius: 10px;
+  display: block;
+}
+
+.progress-bar .progress-bar-percentage .show-progess {
+  background: orange;
+  display: block;
+  height: auto;
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+}
+
+.progress-bar .progress-bar-percentage .no-progress {
+  background: darkgray;
+}

@@ -1,0 +1,143 @@
+import React, { useEffect, useState } from 'react';
+import './App.css';
+
+export default function App() {
+  const [data, setData] = useState([]);
+  const [currentPage, setPerPage] = useState(1);
+
+  const itemsPerPage = 10;
+
+  const fetchProductData = async () => {
+    const fetchResponse = await fetch(
+      'https://dummyjson.com/products?limit=100'
+    );
+    const resp = await fetchResponse.json();
+    console.log(resp);
+
+    if (resp && resp.products) {
+      setData(resp.products);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductData();
+  }, []);
+
+  const selectedPageProducts = (seletedPage) => {
+    if (
+      seletedPage >= 1 &&
+      seletedPage <= data.length / 10 &&
+      seletedPage !== currentPage
+    ) {
+      setPerPage(seletedPage);
+    }
+  };
+
+  return (
+    <div className="App">
+      <div className="products">
+        {data
+          .slice(
+            currentPage * itemsPerPage - itemsPerPage,
+            currentPage * itemsPerPage
+          )
+          .map((item) => {
+            return (
+              <span className="products-card" key={item.id}>
+                <img src={item.thumbnail} alt={item.images[1]} />
+                <h1 className="product-title">{item.title}</h1>
+              </span>
+            );
+          })}
+      </div>
+      {data.length > 0 && (
+        <div className="pagination">
+          <button
+            onClick={() => selectedPageProducts(currentPage - 1)}
+            className="prev"
+          >
+            ◀️
+          </button>
+          {[...Array(data.length / itemsPerPage)].map((_, index) => {
+            return (
+              <button
+                className={currentPage === index + 1 ? 'active' : ''}
+                onClick={() => selectedPageProducts(index + 1)}
+                key={index}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => selectedPageProducts(currentPage + 1)}
+            className="next"
+          >
+            ▶️
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// export default App;
+
+Css
+.products {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  column-gap: 4px;
+  flex-wrap: wrap;
+}
+.products-card {
+  width: 30%;
+  max-height: 400px;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0 16px 16px;
+  cursor: pointer;
+  background-color: cornsilk;
+}
+
+.products-card img {
+  width: 100%;
+  max-height: 220px;
+  height: 100%;
+  object-fit: contain;
+}
+
+.products-card h1 {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px auto;
+}
+
+.pagination > button {
+  border: 1px solid rgb(168, 163, 163);
+  background-color: antiquewhite;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination .prev {
+  background-color: transparent;
+  border: none;
+}
+
+.pagination .next {
+  background-color: transparent;
+  border: none;
+}
+.pagination .active {
+  background-color: aqua;
+}
+

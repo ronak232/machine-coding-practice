@@ -19,6 +19,7 @@
   background-color: #c5c5c5ee;
   border-radius: 10px;
   display: block;
+  text-align: center;
 }
 
 .progress-bar .progress-bar-percentage .show-progess {
@@ -27,6 +28,7 @@
   height: auto;
   border-radius: 10px;
   transition: all 0.4s ease-in-out;
+  text-align: center;
 }
 
 .progress-bar .progress-bar-percentage .no-progress {

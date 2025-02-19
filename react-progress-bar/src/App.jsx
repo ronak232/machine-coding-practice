@@ -13,7 +13,7 @@ function App() {
         if (prev < 100) {
           return prev + 1;
         } else {
-          return prev;
+          return prev; // 
         }
       });
     }, 20);

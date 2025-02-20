@@ -35,7 +35,7 @@
   border-radius: 10px;
   margin-right: 10px;
   position: absolute;
-  left: 0px;
+  left: 10px;
 }
 
 .toggle-container .toggle:checked + label {

@@ -1,9 +1,7 @@
-console.log("main js");
-
 const searchProduct = document.getElementById("search");
 const matchItems = document.getElementById("match-items");
 
-const searchProductsItems = async (search) => {
+const searchPeople = async (search) => {
   const res = await fetch("../../data/data.json");
   const products = await res.json();
   //get all the matched names from api
@@ -23,16 +21,28 @@ const searchProductsItems = async (search) => {
   showPeopleDetails(getMatches);
 };
 
+const debounce = (fn, delay) => {
+  let timeId;
+  return (...args) => {
+    if (timeId) {
+      clearTimeout(timeId);
+    }
+    timeId = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+};
+
 const showPeopleDetails = (matched) => {
   if (matched.length > 0) {
     const html = matched
       .map((items) => {
         return `<div class="card">
                     <div class="card-body">
-                    <img src=${items.product_img}/>
-                        <p>${items.description}</p>
-                        <p>${items.name}</p>
-                  </div>
+                      <img src=${items.product_img}/>
+                        <p class="person-name">${items.name}</p>
+                        <p class="person-detail">${items.description}</p>
+                    </div>
                 </div>`;
       })
       .join(" ");
@@ -40,18 +50,8 @@ const showPeopleDetails = (matched) => {
   }
 };
 
+// Create the debounced version of searchProductsItems outside of the event listener.
+const debouncedSearch = debounce(searchPeople, 500);
 searchProduct.addEventListener("input", () =>
-  debounce(searchProductsItems(searchProduct.value), 500)
+    debouncedSearch(searchProduct.value)
 );
-
-const debounce = (fn, delay) => {
-  let timeId;
-  return (...args) => {
-    if (timeId) {
-      clearInterval(timeId);
-      timeId = setTimeout(() => {
-        fn(...args);
-      }, delay);
-    }
-  };
-};

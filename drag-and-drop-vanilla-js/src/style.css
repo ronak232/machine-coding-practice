@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  max-width: 1240px;
+  margin: auto;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.drag-area {
+  width: 200px;
+  min-height: 250px;
+  max-height: max-content;
+  padding: 10px;
+  border: 1px solid rgba(181, 170, 170, 0.338);
+  border-radius: 10px;
+  box-shadow: 5px 0px 18px rgba(64, 64, 64, 0.573);
+  flex-wrap: wrap;
+}
+
+.candy {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.green {
+  background-color: rgba(16, 255, 44, 0.873);
+}
+.orange {
+  background-color: rgba(251, 182, 44, 0.873);
+}
+.red {
+  background-color: rgba(255, 64, 16, 0.873);
+}
+.blue {
+  background-color: rgba(40, 132, 252, 0.873);
+}
+
+.currentBox {
+  background-color: rgba(211, 244, 225, 0.744);
+  transition: background-color 0.2s ease-in-out;
+}
+

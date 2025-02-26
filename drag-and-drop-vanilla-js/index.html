@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Drag and Drop</title>
+  </head>
+  <body>
+    <div>
+      <h1>Drag and Drop</h1>
+
+      <div class="container">
+        <div class="drag-area green">
+          <img
+            src="./public/images/drag_img.jpeg"
+            alt="candy"
+            draggable="true"
+            id="drag-candy"
+            class="candy"
+          />
+        </div>
+        <div class="drag-area orange">Item Drop Area 2</div>
+        <div class="drag-area red">Item Drop Area 3</div>
+        <div class="drag-area blue">Item Drop Area 4</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

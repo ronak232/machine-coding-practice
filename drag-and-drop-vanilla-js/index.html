@@ -8,10 +8,15 @@
   </head>
   <body>
     <div>
-      <h1>Drag and Drop</h1>
+      <h1 style="text-align: center;">Drag and Drop</h1>
       <div class="drag-upload">
         <div class="drag-area green" id="img-show">
-          <input type="file" id="file-upload" accept="image/*" multiple />
+          <label for="file-upload" id="upload-label"
+            ><span>Drag &amp; Drop Images</span>
+            <span>Or</span>
+            <span>Click for browse Images...🖼️</span>
+            <input type="file" id="file-upload" accept="image/*" multiple />
+          </label>
         </div>
       </div>
       <div class="container">

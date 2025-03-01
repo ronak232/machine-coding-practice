@@ -2,8 +2,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   flex-direction: column;
+  background-color: #181616d0;
 }
 
 .container {
@@ -13,6 +13,7 @@ body {
   align-items: center;
   padding: 0 10px;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .drag-area {
@@ -26,15 +27,28 @@ body {
   flex-wrap: wrap;
 }
 
-.candy {
-  width: 100%;
+.drag-img {
+  max-width: 100px;
   height: 100%;
   object-fit: contain;
+  min-width: 50px;
+}
+
+.drag-upload{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
 }
 
 .green {
   background-color: rgba(16, 255, 44, 0.873);
 }
+
+.green input[type="file"] {
+  width: 100%;
+}
+
 .orange {
   background-color: rgba(251, 182, 44, 0.873);
 }
@@ -46,7 +60,11 @@ body {
 }
 
 .currentBox {
-  background-color: rgba(211, 244, 225, 0.744);
+  background-color: rgba(102, 102, 102, 0.744);
   transition: background-color 0.2s ease-in-out;
 }
 
+.drag-img .hoverLeave:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.726);
+}

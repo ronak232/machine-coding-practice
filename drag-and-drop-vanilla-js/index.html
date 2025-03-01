@@ -9,17 +9,12 @@
   <body>
     <div>
       <h1>Drag and Drop</h1>
-
-      <div class="container">
-        <div class="drag-area green">
-          <img
-            src="./public/images/drag_img.jpeg"
-            alt="candy"
-            draggable="true"
-            id="drag-candy"
-            class="candy"
-          />
+      <div class="drag-upload">
+        <div class="drag-area green" id="img-show">
+          <input type="file" id="file-upload" accept="image/*" multiple />
         </div>
+      </div>
+      <div class="container">
         <div class="drag-area orange">Item Drop Area 2</div>
         <div class="drag-area red">Item Drop Area 3</div>
         <div class="drag-area blue">Item Drop Area 4</div>

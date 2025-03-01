@@ -18,14 +18,13 @@ body {
 
 .drag-area {
   width: 200px;
-  height: max-content;
   min-height: 250px;
+  max-height: max-content;
   padding: 10px;
   border: 1px solid rgba(181, 170, 170, 0.338);
   border-radius: 10px;
   box-shadow: 5px 0px 18px rgba(64, 64, 64, 0.573);
   flex-wrap: wrap;
-  display: flex;
 }
 
 .drag-img {
@@ -35,7 +34,7 @@ body {
   min-width: 50px;
 }
 
-.drag-upload {
+.drag-upload{
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -43,27 +42,11 @@ body {
 }
 
 .green {
-  background-color: rgba(255, 255, 255, 0.911);
-  position: relative;
-  min-width: 250px;
-  font-size: 18px;
+  background-color: rgba(16, 255, 44, 0.873);
 }
 
 .green input[type="file"] {
   width: 100%;
-  visibility: hidden;
-}
-
-.green label {
-  min-height: inherit;
-  display: flex;
-  position: absolute;
-  max-width: 240px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: dashed;
 }
 
 .orange {

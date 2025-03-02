@@ -5,7 +5,7 @@ const drag_img = document.querySelector(".drag-img");
 const label_Onupload = document.getElementById("upload-label");
 
 // drag and drap events
-let isDragged; // store the dragged elements
+let isDragged; // manage the state dragged elements zone
 
 dragUploadFile.addEventListener("change", (e) => {
   if (e.target.files.length > 3) {
@@ -34,6 +34,7 @@ function handleOnDragItem(e) {
 function onDragOver(e) {
   e.stopPropagation();
   e.preventDefault();
+  e.dataTransfer.dropEffect = "move";
   e.target.classList.add("currentBox");
 }
 
@@ -46,16 +47,14 @@ function onDragDrop(e) {
   e.target.classList.remove("currentBox");
   const dropTarget = e.target.closest(".drag-area");
   if (!dropTarget) return;
-
   for (let file of e.dataTransfer.files) {
     if (file.type === "image/*") {
       displayMultipleImages(file);
     }
-  }
-
-  if (isDragged) {
-    if (dropTarget !== isDragged.parentElement) {
-      dropTarget.appendChild(isDragged);
+    if (isDragged) {
+      if (dropTarget !== isDragged.parentElement) {
+        dropTarget.appendChild(isDragged);
+      }
     }
   }
 }
@@ -87,14 +86,8 @@ function dropZonEmptyCheck(image) {
 // handling multiple files
 function displayMultipleImages(files) {
   for (let file of files) {
-    if (!file && !file.type("image/*") && files.length > 3) {
-      return false;
-    }
-  }
-
-  //
-  for (let file of files) {
     let reader = new FileReader();
+    reader.readAsDataURL(file);
     reader.onload = () => {
       let image = new Image();
       image.src = reader.result;
@@ -102,10 +95,10 @@ function displayMultipleImages(files) {
       image.className = "drag-img";
       image.setAttribute("draggable", "true");
       image.addEventListener("dragstart", function (e) {
+        e.dataTransfer.setData("text/plain", image.src);
         isDragged = e.target;
       });
       imageShow.appendChild(image);
     };
-    reader.readAsDataURL(file);
   }
 }

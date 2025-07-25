@@ -1,0 +1,29 @@
+body {
+  background: #242424;
+  color: #ffff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-container {
+  height: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 8px;
+}
+
+ul li {
+  font-size: 24px;
+}
+
+.parent-label {
+  font-size: 24px;
+}

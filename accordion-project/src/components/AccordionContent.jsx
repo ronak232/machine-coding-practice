@@ -12,13 +12,21 @@ function AccordionPanel({ data, onToggle, expanded }) {
             aria-controls="panel-content"
           >
             {expanded ? (
-              <ChevronUp size={"25"} color="white" className="control-arrow up" />
+              <ChevronUp
+                size={"25"}
+                color="white"
+                className="control-arrow up"
+              />
             ) : (
-              <ChevronDown size="25" color="white" className="control-arrow down" />
+              <ChevronDown
+                size="25"
+                color="white"
+                className="control-arrow down"
+              />
             )}
           </button>
         </div>
-        <div className="accordion-body" defaultValue={false}>
+        <div className="accordion-body">
           <div
             className={`accordion-content ${expanded ? "show" : "collapsed"}`}
           >

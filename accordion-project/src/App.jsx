@@ -32,7 +32,7 @@ function App() {
   ];
   return (
     <>
-      <Accordion data={data} defaultExpand={null}/>
+      <Accordion data={data}/>
       {/* <MyComponent/> */}
     </>
   );
